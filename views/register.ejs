@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+
+<body>
+    <form action="http://localhost:3008/api/v1/auth/create-google-account" method="post">
+        <label for="email">email</label>
+        <input type="email" id="email" name="email">
+        <br>
+        <label for="name">name</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <label for="gender">gender</label>
+        <select name="gender" id="gender">
+            <option value=<%=true %> selected="selected">male</option>
+            <option value=<%=false %>>female</option>
+        </select>
+        <br>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" value="Password123@">
+        <br>
+        <label for="confirmPassword">ConfirmPassword</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" value="Password123@">
+        <br>
+        <label for="preferredLocation">Preferred Location</label>
+        <input type="text" id="preferredLocation" value="Indonesia" name="preferredLocation">
+        <input type="text" value="client" name="role" id="role" style="display: none;">
+        <input type="text" name="googleId" id="googleId" style="display: none;">
+        <input type="text" name="status" id="status" style="display: none;">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Get the URL query string
+        const queryString = window.location.search;
+
+        // Create a new URLSearchParams object
+        const searchParams = new URLSearchParams(queryString);
+
+        const name = document.getElementById('name')
+        const email = document.getElementById('email')
+        const googleId = document.getElementById('googleId')
+        const status = document.getElementById('status')
+
+        email.value = searchParams.get('email')
+        name.value = searchParams.get('name')
+        googleId.value = searchParams.get('googleId')
+        status.value = searchParams.get('status')
+        console.log(googleId.value)
+    </script>
+</body>
+
+</html>
